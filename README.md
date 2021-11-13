@@ -18,6 +18,10 @@ if (!require("devtools"))
   install.packages("devtools")
 devtools::install_github("Winnie09/SCUBI")
 ```
+
+## User Manual
+Please visit this webpage for the user manual: https://winnie09.github.io/Wenpin_Hou/pages/SCUBI.html
+
 ## Contact the Author
 Author: Wenpin Hou, Zhicheng Ji
 
