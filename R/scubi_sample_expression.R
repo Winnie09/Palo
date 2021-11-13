@@ -23,7 +23,6 @@
 #' scubi_sample_expression(dim1=rnorm(10000),dim2=rnorm(10000),count=matrix(rbinom(100000,10,0.1),nrow=10,dimnames=list(LETTERS[1:10],NULL)),gene='A',sample=sample(c('S1','S2'),10000,replace=TRUE),design=data.frame(group=c(1,0),row.names=c('S1','S2')))
 
 scubi_sample_expression <- function(dim1,dim2,count,gene,sample,design,smooth=TRUE,clip=TRUE,scale=TRUE,resolution=10*20/max(diff(range(dim1)),diff(range(dim2))),plot=TRUE,palette=rainbow(15)[c(11:1,15)]) {
-  resolution <- resolution * as.numeric(formatC(20/max(diff(range(dim1)),diff(range(dim2))),digits = 1))
   design <- as.matrix(design)
   g <- paste0(round(dim1*resolution),'_',round(dim2*resolution))
   comb <- paste0(g,' ',sample)

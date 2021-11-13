@@ -19,7 +19,6 @@
 #' scubi_expression(dim1=rnorm(10000),dim2=rnorm(10000),count=matrix(rbinom(100000,10,0.1),nrow=10,dimnames=list(LETTERS[1:10],NULL)),gene=list('A','B'))
 
 scubi_expression <- function(dim1,dim2,count,gene,resolution=10*20/max(diff(range(dim1)),diff(range(dim2))),plot=TRUE,palette=rainbow(15)[c(11:1,15)]) {
-  resolution <- resolution * as.numeric(formatC(20/max(diff(range(dim1)),diff(range(dim2))),digits = 1))
   g <- paste0(round(dim1*resolution),'_',round(dim2*resolution))
   rc <- rowsum(colSums(count),g)[,1]
   if (!is.list(gene)) {

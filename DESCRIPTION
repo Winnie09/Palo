@@ -8,8 +8,8 @@ Maintainer: Wenpin Hou <whou10@jhu.edu>
 Description: Single-cell Unbiased Visualization with SCUBI
 Encoding: UTF-8
 License: MIT
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
-Imports: ggplot2, Matrix
+Imports: ggplot2, Matrix, reshape2, pdist
 Suggests: knitr, rmarkdown, markdown
 Depends: R (>= 3.5.0)

@@ -8,7 +8,6 @@ scubi_discrete(
   dim1,
   dim2,
   feature,
-  normalize = FALSE,
   resolution = 10 * 20/max(diff(range(dim1)), diff(range(dim2))),
   plot = TRUE,
   palette = rainbow(length(unique(feature)))
@@ -20,8 +19,6 @@ scubi_discrete(
 \item{dim2}{Numeric vector for the second dimension.}
 
 \item{feature}{Character vector of a discrete variable (e.g. gender of the sample the cell was collected).}
-
-\item{normalize}{Either TRUE or FALSE. If TRUE, for each discrete category, number of cells in each region will be normalized by the total number of cells. This is to address the bias induced by the unbalanced total number of cells for discrete categories.}
 
 \item{resolution}{Numeric value of resolution. A higher value will result in smaller squares, thus higher resolution.}
 

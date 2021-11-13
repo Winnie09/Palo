@@ -21,7 +21,6 @@
 #' scubi_sample_composition(dim1=rnorm(10000),dim2=rnorm(10000),sample=sample(c('A','B'),10000,replace=TRUE),design=data.frame(group=c(1,0),row.names=c('A','B')))
 
 scubi_sample_composition <- function(dim1,dim2,sample,design,smooth=TRUE,clip=TRUE,scale=TRUE,resolution=10*20/max(diff(range(dim1)),diff(range(dim2))),plot=TRUE,palette=rainbow(15)[c(11:1,15)]) {
-  resolution <- resolution * as.numeric(formatC(20/max(diff(range(dim1)),diff(range(dim2))),digits = 1))
   design <- as.matrix(design)
   g <- paste0(round(dim1*resolution),'_',round(dim2*resolution))
   tab <- table(g,sample)

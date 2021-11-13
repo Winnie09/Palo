@@ -17,7 +17,6 @@
 #' scubi_continuous(dim1=rnorm(10000),dim2=rnorm(10000),feature=rnorm(10000))
 
 scubi_continuous <- function(dim1,dim2,feature,resolution=10*20/max(diff(range(dim1)),diff(range(dim2))),plot=TRUE,palette=rainbow(15)[c(11:1,15)]) {
-  resolution <- resolution * as.numeric(formatC(20/max(diff(range(dim1)),diff(range(dim2))),digits = 1))
   g <- paste0(round(dim1*resolution),'_',round(dim2*resolution))
   tabd <- table(g)
   tab <- as.vector(tabd)
