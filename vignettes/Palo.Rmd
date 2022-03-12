@@ -1,6 +1,5 @@
 ---
-title: 'Palo: Spatial-aware color palette optimization for single-cell and spatial
-  data'
+title: 'Palo: Spatially-aware color palette optimization for single-cell and spatial data'
 author:
 - Wenpin Hou, Department of Biostatistics, Johns Hopkins Bloomberg School of Public
   Health
