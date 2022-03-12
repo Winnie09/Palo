@@ -1,4 +1,4 @@
-Palo: Spatial-aware color palette optimization for single-cell and spatial data
+Palo: Spatially-aware color palette optimization for single-cell and spatial data
 ====
 
 ## Overview
@@ -27,3 +27,4 @@ Report bugs and provide suggestions by sending email to:
 Maintainer: Wenpin Hou (whou10@jhu.edu)
 
 Or open a new issue on this Github page
+
