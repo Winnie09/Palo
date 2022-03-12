@@ -1,0 +1,123 @@
+---
+title: 'Palo: Spatial-aware color palette optimization for single-cell and spatial
+  data'
+author:
+- Wenpin Hou, Department of Biostatistics, Johns Hopkins Bloomberg School of Public
+  Health
+- Zhicheng Ji, Department of Biostatistics and Bioinformatics, Duke University School
+  of Medicine
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introductions
+
+In the exploratory data analysis of single-cell or spatial genomic data, single cells or spatial spots are often visualized using a two-dimensional plot where each cluster is marked with a different color. With tens of clusters, current visualization methods will often result in visually similar colors assigned to spatially neighbouring clusters, making it hard to distinguish and identify the boundary between clusters. To address this issue, we developed Palo that optimizes the color palette assignment for single-cell and spatial data in a spatially aware manner. Palo identifies pairs of clusters that are spatially neighbouring to each other, and assigns visually different colors to those neighbouring clusters. We demonstrate that Palo results in better visualization in real single-cell and spatial genomic datasets.
+
+## Load packages
+
+```{r,message=FALSE}
+library(Palo)
+library(ggplot2)
+```
+
+The following two packages are loaded here only because they are used in this vignette. Users can skip loading these two packages if they are not used. 
+
+```{r,message=FALSE,warning=FALSE}
+library(Seurat)
+library(SeuratData)
+
+```
+
+## Single-cell RNA-seq example
+
+We demonstrate Palo on an example single-cell RNA-seq dataset of T cell subsets described in the manuscript. The dataset has been further subsetted to reduce its size. 
+
+First, load the data, which is a data.frame.
+
+```{r}
+d <- readRDS(paste0(system.file('data',package = 'Palo'),'/sc.rds'))
+```
+
+Get the UMAP coordinates. If the data is a Seurat object, the UMAP coordinates can be obtained by 'd[["umap"]]@cell.embeddings'
+```{r}
+u <- d[,c('UMAP_1','UMAP_2')]
+```
+
+Get the cell clusters. If the data is a Seurat object, the cluster information can be obtained by 'Idents(d)'
+```{r}
+cl <- as.character(d$CellType)
+```
+
+Generate a color palette which is used by ggplot2. Colorblind friendly palettes can be generated using the RColorbrewer package.
+```{r}
+gg_color_hue <- function(n) {
+  hues = seq(30, 500, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+pal <- gg_color_hue(length(unique(cl)))
+```
+
+Run Palo to get the optimized palette:
+```{r}
+palopal <- Palo(u,cl,pal)
+palopal
+```
+
+Visualize the UMAP with the Palo palette using ggplot2.
+```{r}
+med <- aggregate(u,list(cl),median)
+colnames(med)[1] <- 'CellType'
+ggplot() + geom_point(data=d,aes(x=UMAP_1,y=UMAP_2,col=CellType),size=0.1,alpha=0.3) + geom_text(data=med,aes(x=UMAP_1,y=UMAP_2,label=CellType),size=5) + theme_void() + scale_color_manual(values=palopal) + theme(legend.position = 'none')
+```
+
+## Spatial transcriptomics example
+
+We demonstrate Palo on an example spatial transcriptomics data of mouse brain described in the manuscript.
+
+Load the data, which is a Seurat object.
+```{r}
+d <- readRDS(paste0(system.file('data',package = 'Palo'),'/spatial.rds'))
+```
+
+Get the spatial coordinates.
+```{r}
+u <- d$anterior1@coordinates[,c(2,3)]
+```
+
+Get the spot clusters.
+```{r}
+cl <- Idents(d)
+```
+
+Generate a color palette which is used by ggplot2. 
+```{r}
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+pal <- gg_color_hue(length(unique(cl)))
+```
+
+Run Palo to get the optimized palette:
+```{r}
+palopal <- Palo(u,cl,pal)
+palopal
+```
+
+Generate the spatial plot with Palo palette using the SpatialDimPlot function by Seurat.
+```{r,message=FALSE,warning=FALSE}
+SpatialDimPlot(d, label = TRUE, label.size = 3,stroke=NA) + scale_fill_manual(values=palopal) + theme(legend.position='none')
+```
+
+
+## Session Info
+```{r}
+sessionInfo()
+```

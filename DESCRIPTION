@@ -1,0 +1,17 @@
+Package: Palo
+Type: Package
+Title: Color palette optimization for single-cell and spatial data
+Version: 1.0
+Date: 2022-03-12
+Author: Wenpin Hou, Zhicheng Ji
+Maintainer: Wenpin Hou <whou10@jhu.edu>
+Description: Palo optimizes the color palette selection for single-cell and spatial data
+Encoding: UTF-8
+License: MIT
+RoxygenNote: 7.1.2
+VignetteBuilder: knitr
+Imports: MASS
+Suggests: Seurat, SeuratData, ggplot2, knitr, rmarkdown, markdown
+Depends: R (>= 3.5.0)
+NeedsCompilation: no
+Packaged: 2022-03-12 14:59:06 UTC; wenpinhou
