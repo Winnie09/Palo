@@ -242,8 +242,8 @@ palopal</code></pre>
   hcl(h = hues, l = 65, c = 100)[1:n]
 }
 pal &lt;- gg_color_hue(length(unique(cl)))</code></pre>
-<p>Run Palo to get the optimized palette. Here we increased the number of optimization iterations (by increasing refine_iter and early_stop ) to improve the performance.</p>
-<pre class="r"><code>palopal &lt;- Palo(u,cl,pal,refine_iter=2000,early_stop = 1000)
+<p>Run Palo to get the optimized palette:</p>
+<pre class="r"><code>palopal &lt;- Palo(u,cl,pal)
 palopal</code></pre>
 <pre><code>##         2         5         3        11         8         4         9         0 
 ## &quot;#B983FF&quot; &quot;#619CFF&quot; &quot;#6BB100&quot; &quot;#C99800&quot; &quot;#A3A500&quot; &quot;#FF67A4&quot; &quot;#FD61D1&quot; &quot;#00BA38&quot; 

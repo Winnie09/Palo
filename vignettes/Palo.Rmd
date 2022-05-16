@@ -6,9 +6,9 @@ author:
 - Zhicheng Ji, Department of Biostatistics and Bioinformatics, Duke University School
   of Medicine
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -124,9 +124,9 @@ gg_color_hue <- function(n) {
 pal <- gg_color_hue(length(unique(cl)))
 ```
 
-Run Palo to get the optimized palette. Here we increased the number of optimization iterations (by increasing refine_iter and early_stop ) to improve the performance.
+Run Palo to get the optimized palette:
 ```{r}
-palopal <- Palo(u,cl,pal,refine_iter=2000,early_stop = 1000)
+palopal <- Palo(u,cl,pal)
 palopal
 ```
 
