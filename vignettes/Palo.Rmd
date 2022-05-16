@@ -73,7 +73,12 @@ Visualize the UMAP with the Palo palette using ggplot2.
 ```{r}
 med <- aggregate(u,list(cl),median)
 colnames(med)[1] <- 'CellType'
-ggplot() + geom_point(data=d,aes(x=UMAP_1,y=UMAP_2,col=CellType),size=0.1,alpha=0.3) + geom_text(data=med,aes(x=UMAP_1,y=UMAP_2,label=CellType),size=5) + theme_void() + scale_color_manual(values=palopal) + theme(legend.position = 'none')
+ggplot() + 
+  geom_point(data=d,aes(x=UMAP_1,y=UMAP_2,col=CellType),size=0.1,alpha=0.3) + 
+  geom_text(data=med,aes(x=UMAP_1,y=UMAP_2,label=CellType),size=5) + 
+  theme_void() + 
+  scale_color_manual(values=palopal) + 
+  theme(legend.position = 'none')
 ```
 
 Palo accepts different weights for RGB colors when calculating color distances. This can make a difference with a large number of colors. Some typical choices of weights include (3,4,2) and (2,4,3). For example, to run Palo with RGB weights of (3,4,2).
@@ -127,7 +132,8 @@ palopal
 
 Generate the spatial plot with Palo palette using the SpatialDimPlot function by Seurat.
 ```{r,message=FALSE,warning=FALSE}
-SpatialDimPlot(d, label = TRUE, label.size = 3,stroke=NA) + scale_fill_manual(values=palopal) + theme(legend.position='none')
+SpatialDimPlot(d, label = TRUE, label.size = 3,stroke=NA) + 
+  scale_fill_manual(values=palopal) + theme(legend.position='none')
 ```
 
 
