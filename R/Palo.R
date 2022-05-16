@@ -25,7 +25,7 @@
 #' pal <- Palo(x,cluster,palette)
 #' qplot(x[,1],x[,2],col=cluster) + scale_color_manual(values=pal)
 
-Palo <- function(position,cluster,palette,rgb_weight=c(1,1,1),color_blind_fun=NULL,init_iter=1000,refine_iter=1000,early_stop=100) {
+Palo <- function(position,cluster,palette,rgb_weight=c(1,1,1),color_blind_fun=NULL,init_iter=1000,refine_iter=2000,early_stop=500) {
   cluster <- as.character(cluster)
   uc <- unique(cluster)
   sampcluster <- sample(cluster)

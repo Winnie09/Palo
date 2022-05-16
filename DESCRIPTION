@@ -14,4 +14,4 @@ Imports: MASS, colorspace
 Suggests: Seurat, SeuratData, ggplot2, knitr, rmarkdown, markdown
 Depends: R (>= 3.5.0)
 NeedsCompilation: no
-Packaged: 2022-05-16 13:44:07 UTC; wenpinhou
+Packaged: 2022-05-16 19:49:10 UTC; wenpinhou

@@ -11,8 +11,8 @@ Palo(
   rgb_weight = c(1, 1, 1),
   color_blind_fun = NULL,
   init_iter = 1000,
-  refine_iter = 1000,
-  early_stop = 100
+  refine_iter = 2000,
+  early_stop = 500
 )
 }
 \arguments{
